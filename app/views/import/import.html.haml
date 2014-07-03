@@ -1,0 +1,21 @@
+.row
+  .small-12.small-centered.columns
+    %h3= t('text.import.success')
+
+  .panel
+    %table
+      %thead
+        %tr
+          %th Key
+          %th Value
+      %tbody
+        %tr
+          %td Level
+          %td= @level
+        %tr
+          %td AP
+          %td= @ap
+        - @stats.each do |key, value|
+          %tr
+            %td= StatsHelper::KEYWORDS[key] + ':'
+            %td= value

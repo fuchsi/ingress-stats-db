@@ -1,0 +1,58 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  hello: "Hello world"
+  text:
+    users:
+      new: "Signup"
+    topbar:
+      import: "Import Stats"
+      stats: "Stats"
+      logout: "Log out"
+      login: "Sign in"
+      signup: "Signup"
+      stats_compare: "Compare Stats"
+    session:
+      new: "Sign in"
+    import:
+      index: "Import Stats"
+      success: "Import successful"
+      screenshot: "Screenshot(s)"
+    stats:
+      index: "Current Stats"
+      compare: "Compare Stats"
+  buttons:
+    signup: "Signup"
+    login: "Sign in"
+    import: "Import"
+    compare: "Compare"
+  activerecord:
+    attributes:
+      user:
+        name: "Agent name"
+        password: "Password"
+      agent_stat:
+        name: "Import Name"
+        name_placeholder: "i.e. destroyed L8 farm"
+  messages:
+    upload:
+      failure: "Upload failed"

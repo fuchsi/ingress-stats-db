@@ -1,0 +1,12 @@
+configuration: &defaults
+  tesseract:
+    prefix: /usr/share/
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

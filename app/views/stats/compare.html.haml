@@ -1,0 +1,14 @@
+.row
+  .small-12.small-centered.columns
+    %h3= t('text.stats.compare')
+
+  .panel
+    = form_tag :stats_compare, method: :get do
+      .row
+        .small-4.medium-5.columns= select_tag :first, options_from_collection_for_select(@options, 'id', 'name', params[:first])
+        .small-4.medium-2.columns compare with
+        .small-4.medium-5.columns= select_tag :second, options_from_collection_for_select(@options, 'id', 'name', params[:second])
+      .row
+        .small-12.medium-12.columns.small-centered= submit_tag t('buttons.compare'), class: 'button'
+  - if @entries
+    = render template: 'stats/_table'

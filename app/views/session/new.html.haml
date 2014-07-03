@@ -1,0 +1,15 @@
+.row
+  .small-12.small-centered.columns
+    %h3= t('text.session.new')
+
+  .panel
+    = form_tag :sessions do
+      .row
+        .small-12.columns
+          = label_tag :name, t('activerecord.attributes.user.name')
+          = text_field_tag :name, params[:name]
+      .row
+        .small-12.columns
+          =label_tag :password, t('activerecord.attributes.user.password')
+          = password_field_tag :password
+      = submit_tag t('buttons.login'), :class => 'button'

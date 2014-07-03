@@ -1,0 +1,31 @@
+.contain-to-grid.sticky
+  %nav.top-bar(data-topbar=true data-options="sticky_on: large")
+    %ul.title-area
+      %li.name
+        %h1= link_to 'Ingress Stats DB', root_path
+      %li.toggle-topbar.menu-icon
+        %a{:href => '#'} Menu
+
+    %section.top-bar-section
+      %ul.left
+        - if user_signed_in?
+          %li= link_to t('text.topbar.import'), :import_index
+          %li.has-dropdown.not-click
+            = link_to t('text.topbar.stats'), :stats_index
+            %ul.dropdown
+              %li.show-for-small-only= link_to t('text.topbar.stats'), :stats_index
+              %li= link_to t('text.topbar.stats_compare'), :stats_compare
+              %li= link_to t('text.topbar.stats_graphs'), :stats_index
+
+      %ul.right
+        %li.has-dropdown.not-click
+          - if user_signed_in?
+            = link_to current_user.name, :user
+            %ul.dropdown
+              %li= link_to t('text.topbar.logout'), :logout, method: :delete
+          - else
+            %a{:href => '#'}= t('text.topbar.user')
+            %ul.dropdown
+              %li= link_to t('text.topbar.login'), :login
+              %li= link_to t('text.topbar.signup'), :signup
+

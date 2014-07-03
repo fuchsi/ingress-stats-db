@@ -1,0 +1,24 @@
+.row
+  .small-12.small-centered.columns
+    %h3= t('text.import.index')
+
+  .panel
+    .row
+      .small-12.columns
+        %p Hier sollte die Erklärung sein.
+    = form_tag :import, multipart: true, 'data-abide' => true do
+      .row
+        .small-6.columns
+          = label_tag :screenshot, t('text.import.screenshot')
+          = file_field_tag 'screenshot[]', accept: 'image/png,image/gif,image/jpeg', multiple: true
+        .small-6.columns
+          = label_tag :name, t('activerecord.attributes.agent_stat.name')
+          = text_field_tag :name, '', placeholder: t('activerecord.attributes.agent_stat.name_placeholder')
+      .row
+        .small-6.columns
+          = label_tag :date, t('activerecord.attributes.agent_stat.import_date')
+          = date_field_tag :date, Date.current.to_s(:db), required_pattern: 'date'
+        .small-6.columns
+          = label_tag :time, t('activerecord.attributes.agent_stat.import_time')
+          = time_field_tag :time, Time.now.to_s(:time_long), required_pattern: 'time'
+      = submit_tag t('buttons.import'), :class => 'button'

@@ -2,6 +2,14 @@ class StatsController < ApplicationController
   before_filter :require_login
 
   def index
+    @stats = current_user.agent_stats.order(import_date: :desc)
+  end
+
+  def show
+    @stats = current_user.agent_stats.find(params[:id])
+  end
+
+  def last
     stats = AgentStat.last_two(current_user)
     stats_diff(stats)
   end
@@ -17,6 +25,33 @@ class StatsController < ApplicationController
     stats_diff(stats)
 
     @options = current_user.agent_stats.reverse
+  end
+
+  def edit
+    @stats = current_user.agent_stats.find(params[:id])
+  end
+
+  def update
+    @stats = current_user.agent_stats.find(params[:id])
+
+    respond_to do |format|
+      if @stats.update(stats_params)
+        format.html { redirect_to @stats, notice: 'Agent Stats were successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @stats.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    @stats = current_user.agent_stats.find(params[:id])
+    @stats.delete
+    respond_to do |format|
+      format.html { redirect_to stats_url }
+      format.json { head :no_content }
+    end
   end
 
   private
@@ -52,5 +87,10 @@ class StatsController < ApplicationController
           end
         end
       end
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def stats_params
+      params.require(:agent_stat).permit(:name, :level, :ap, addresses_attributes: [:id, :name, :value])
     end
 end

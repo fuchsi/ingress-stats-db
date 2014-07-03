@@ -19,3 +19,6 @@
           %tr
             %td= StatsHelper::KEYWORDS[key] + ':'
             %td= value
+    .row
+      .small-12.columns
+        = link_to t('text.import.edit'), edit_stat_path(@agent_stats), class: ['button', 'tiny']

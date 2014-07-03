@@ -31,6 +31,9 @@ en:
       login: "Sign in"
       signup: "Signup"
       stats_compare: "Compare Stats"
+      stats_last: "Latest"
+      stats_graphs: "Graphs"
+      user: "Agent"
     session:
       new: "Sign in"
     import:
@@ -40,6 +43,7 @@ en:
     stats:
       index: "Current Stats"
       compare: "Compare Stats"
+      show: "Show Stats"
   buttons:
     signup: "Signup"
     login: "Sign in"
@@ -53,6 +57,14 @@ en:
       agent_stat:
         name: "Import Name"
         name_placeholder: "i.e. destroyed L8 farm"
+        import_date: "Import Date"
+        level: "Level"
+        ap: "AP"
   messages:
     upload:
       failure: "Upload failed"
+    login_successful: "Successfully signed in"
+    login_failure: "Sign in failed"
+    logout: "Logged out"
+    user:
+      created: "User was successfully created"

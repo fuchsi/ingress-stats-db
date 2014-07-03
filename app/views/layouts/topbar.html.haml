@@ -11,11 +11,12 @@
         - if user_signed_in?
           %li= link_to t('text.topbar.import'), :import_index
           %li.has-dropdown.not-click
-            = link_to t('text.topbar.stats'), :stats_index
+            = link_to t('text.topbar.stats'), :stats
             %ul.dropdown
-              %li.show-for-small-only= link_to t('text.topbar.stats'), :stats_index
+              %li.show-for-small-only= link_to t('text.topbar.stats'), :stats
+              %li= link_to t('text.topbar.stats_last'), :stats_last
               %li= link_to t('text.topbar.stats_compare'), :stats_compare
-              %li= link_to t('text.topbar.stats_graphs'), :stats_index
+              %li= link_to t('text.topbar.stats_graphs'), :stats
 
       %ul.right
         %li.has-dropdown.not-click

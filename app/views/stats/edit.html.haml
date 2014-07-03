@@ -1,0 +1,27 @@
+.row
+  .small-12.small-centered.columns
+    %h3= t('text.stats.edit')
+
+  .panel
+    = form_for @stats, :url => :stat do |f|
+      .row
+        .small-12.columns
+          = f.text_field :name
+      .row
+        .small-12.columns
+          = f.text_field :import_date
+      .row
+        .small-12.columns
+          = f.text_field :level
+      .row
+        .small-12.columns
+          = f.text_field :ap
+      = f.fields_for :agent_stats_entries do |entry|
+        .row
+          .small-6.columns
+            = entry.text_field :display_name, disabled: true
+          .small-6.columns
+            = entry.text_field :value
+      .row
+        .small-12.columns
+          = f.submit

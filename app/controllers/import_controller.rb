@@ -44,16 +44,16 @@ class ImportController < ApplicationController
         end
       end
 
-      stats = AgentStat.new
-      stats.user = current_user
-      stats.level = @level
-      stats.ap = @ap
-      stats.name = import_name
-      stats.import_date = import_date
+      @agent_stats = AgentStat.new
+      @agent_stats.user = current_user
+      @agent_stats.level = @level
+      @agent_stats.ap = @ap
+      @agent_stats.name = import_name
+      @agent_stats.import_date = import_date
 
-      if stats.save
+      if @agent_stats.save
         @stats.each do |name, value|
-          stats.agent_stats_entries.create(name: name, value: value)
+          @agent_stats.agent_stats_entries.create(name: name, value: value)
         end
       end
     else

@@ -13,8 +13,10 @@ Rails.application.routes.draw do
 
   get 'import' => 'import#index', as: :import_index
   post 'import' => 'import#import', as: :import
-  get 'stats' => 'stats#index', as: :stats_index
+  get 'stats/last' => 'stats#last', as: :stats_last
   get 'compare' => 'stats#compare', as: :stats_compare
+
+  resources :stats, execpt: [:new, :create]
 
   resource :user, only: [:edit, :update]
   resources :users, exept: [:edit, :update, :new, :create]

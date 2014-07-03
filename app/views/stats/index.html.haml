@@ -3,4 +3,21 @@
     %h3= t('text.stats.index')
 
   .panel
-    = render template: 'stats/_table'
+    %table
+      %thead
+        %tr
+          %th= t('activerecord.attributes.agent_stat.name')
+          %th= t('activerecord.attributes.agent_stat.import_date')
+          %th= t('activerecord.attributes.agent_stat.level')
+          %th= t('activerecord.attributes.agent_stat.ap')
+          %th ...
+      %tbody
+        - @stats.each do |entry|
+          %tr
+            %td= link_to entry.name, stat_path(entry)
+            %td= entry.import_date.to_s(:db)
+            %td= entry.level
+            %td= number_with_delimiter(entry.ap)
+            %td
+              = link_to 'edit', edit_stat_path(entry), class: ['button', 'tiny']
+              = link_to 'delete',  stat_path(entry), method: :delete, class: ['button', 'tiny', 'alert'], data: { confirm: "Are you sure?" }

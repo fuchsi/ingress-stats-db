@@ -22,25 +22,13 @@ Create a seperate user `ingress-stats-db` for Ingress Stats DB
 #### 3. Database
 We recommend using a PostgreSQL database.
 
-    # Login to PostgreSQL
-    sudo -u postgres psql -d template1
-
-    # Create a user for GitLab.
-    template1=# CREATE USER ingress-stats-db CREATEDB;
-
-    # Create the GitLab production database & grant all privileges on database
-    template1=# CREATE DATABASE ingress-stats-db_production OWNER ingress-stats-db;
-
-    # Quit the database session
-    template1=# \q
-
-    # Try connecting to the new database with the new user
-    sudo -u ingress-stats-db -H psql -d ingress-stats-db_production
+    # Create a user for Ingress Stats DB.
+    sudo -u postgres -H createuser -d ingress-stats-db
 
 #### 4. Ingress Stats DB
 
     # Clone Ingress Stats DB repository
-    sudo -u git -H git clone https://gitlab.com/fuchsi/ingress-stats-db.git
+    sudo -u git -H git clone https://github.com/fuchsi/ingress-stats-db.git
 
     # Go to Ingress Stats DB dir
     cd /home/ingress-stats-db/ingress-stats-db

@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.2'
+gem 'rails', '4.1.4'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -10,7 +10,7 @@ gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.0.1'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
@@ -45,9 +45,12 @@ gem 'foundation_rails_helper'
 # Use haml
 gem 'haml'
 
-gem 'omniauth'
-gem 'omniauth-google-oauth2'
+# Use omniauth for oauth
+gem 'omniauth', group: :oauth
+gem 'omniauth-google-oauth2', group: :oauth
 
+# Use tesseract-ocr
 gem 'tesseract-ocr', '~> 0.1.6'
 
+# Use configurate
 gem 'configurate'

@@ -14,6 +14,10 @@
 Well, this depends on your system.
 Check your package manager.
 
+#### 1a. Install tesseract 3.0+
+Well, this depends on your system.
+Check your package manager or check https://code.google.com/p/tesseract-ocr/downloads/list
+
 #### 2. Seperate user
 Create a seperate user `ingress-stats-db` for Ingress Stats DB
 
@@ -28,7 +32,7 @@ We recommend using a PostgreSQL database.
 #### 4. Ingress Stats DB
 
     # Clone Ingress Stats DB repository
-    sudo -u git -H git clone https://github.com/fuchsi/ingress-stats-db.git
+    sudo -u git -H git clone https://gitlab.bn3t.de/fuchsi/ingress-stats-db.git
 
     # Go to Ingress Stats DB dir
     cd /home/ingress-stats-db/ingress-stats-db
@@ -65,7 +69,14 @@ Configure DB Settings
     sudo -u ingress-stats-db -H bundle exec rake assets:precompile RAILS_ENV=production
 
 ### Run in production mode
-* tbd
+
+Start the unicorn production server with
+
+    cd /home/ingress-stats-db/ingress-stats-db
+
+    sudo -u ingress-stats-db -H scripts/web
+
+and surf to http://localhost:8080
 
 ### Run in development mode
 

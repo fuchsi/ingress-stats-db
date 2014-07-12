@@ -74,7 +74,7 @@ Start the unicorn production server with
 
     cd /home/ingress-stats-db/ingress-stats-db
 
-    sudo -u ingress-stats-db -H scripts/web
+    sudo -u ingress-stats-db -H RAILS_ENV=production scripts/web start
 
 and surf to http://localhost:8080
 

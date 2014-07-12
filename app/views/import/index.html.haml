@@ -11,7 +11,7 @@
       .row
         #screenshot-container.small-6.columns
           = label_tag :screenshot, t('text.import.screenshot')
-          = file_field_tag 'screenshot', accept: 'image/png,image/gif,image/jpeg', multiple: true
+          = file_field_tag 'screenshot[]', accept: 'image/png,image/gif,image/jpeg', multiple: true
         .small-6.columns
           = label_tag :name, t('activerecord.attributes.agent_stat.name')
           = text_field_tag :name, '', placeholder: t('activerecord.attributes.agent_stat.name_placeholder')

@@ -9,7 +9,7 @@ class ImportController < ApplicationController
 
   # POST /import
   def import
-    if params[:id].to_i > 0
+    if params.has_key?(:screenshot)
       require 'tesseract'
 
       e = Tesseract::Engine.new { |e|
@@ -17,13 +17,11 @@ class ImportController < ApplicationController
         e.language = :eng
       }
 
-      @agent_stats = current_user.agent_stats.find(params[:id])
-
-      if @agent_stats
+      if params[:screenshot].count > 0
         text = ''
-        @agent_stats.agent_stats_uploads.each do |upload|
+        params[:screenshot].each do |upload|
           begin
-            file = upload.screenshot.path
+            file = upload.open
             text += e.text_for(file).strip
           rescue ArgumentError
             flash.now.alert = t('messages.upload.failure')
@@ -52,7 +50,8 @@ class ImportController < ApplicationController
           end
         end
 
-
+        @agent_stats = AgentStat.new
+        @agent_stats.user = current_user
         @agent_stats.level = @level
         @agent_stats.ap = @ap
         @agent_stats.name = import_name
@@ -62,8 +61,15 @@ class ImportController < ApplicationController
           @stats.each do |name, value|
             @agent_stats.agent_stats_entries.create(name: name, value: value)
           end
+
+          pos = 0
+          params[:screenshot].each do |upload|
+            @agent_stats.agent_stats_uploads.create(pos: pos, screenshot: upload)
+            pos += 1
+          end
         end
       else
+        @agent_stats.destroy
         flash.now.alert = t('messages.upload.failure')
         render 'index'
       end

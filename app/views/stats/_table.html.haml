@@ -1,24 +1,19 @@
 %table
-  %thead
-    %tr
-      %th Key
-      %th Value
-      %th{colspan: 2} Change
   %tbody
     %tr
       %td Level
       %td= number_with_delimiter(@level)
-      %td!= format_number(@level_change)
+      %td!= format_number_color(@level_change)
       %td!= format_percent(@level_change_perc)
     %tr
       %td AP
       %td= number_with_delimiter(@ap)
-      %td!= format_number(@ap_change)
+      %td!= format_number_color(@ap_change)
       %td!= format_percent(@ap_change_perc)
     - StatsHelper::KEYWORDS.each do |key, name|
       - entry = @entries[key.to_s]
       %tr
         %td= name
-        %td= number_with_delimiter(entry[:value])
-        %td!= format_number(entry[:change])
+        %td= number_with_delimiter(entry[:value]) + ' ' + entry[:unit]
+        %td!= format_number_color(entry[:change], entry[:unit])
         %td!= format_percent(entry[:change_perc])

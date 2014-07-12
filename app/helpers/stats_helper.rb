@@ -29,14 +29,14 @@ module StatsHelper
       defense_4:   'Largest Field MUs x Days',
   }
 
-  def format_number(n)
+  def format_number_color(n, unit = '')
     number = number_with_delimiter(n)
 
     if n > 0
-      return "<span class=\"number-pos\">#{number}</span>"
+      return "<span class=\"number-pos\">#{number} #{unit}</span>"
     end
 
-    "<span class=\"number-neg\">#{number}</span>"
+    "<span class=\"number-neg\">#{number} #{unit}</span>"
   end
 
   def format_percent(n)

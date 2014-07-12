@@ -71,7 +71,7 @@ class StatsController < ApplicationController
 
         e1.agent_stats_entries.each do |entry|
           key = entry.name.to_s
-          @entries[key] = {value: entry.value.to_i, change: 0, change_perc: 0.0}
+          @entries[key] = {value: entry.value.to_i, change: 0, change_perc: 0.0, unit: entry.unit}
         end
 
         if stats.many?

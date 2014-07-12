@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   get 'import' => 'import#index', as: :import_index
   post 'import' => 'import#import', as: :import
+  post 'import/upload' => 'import#upload', as: :import_upload
   get 'stats/last' => 'stats#last', as: :stats_last
   get 'compare' => 'stats#compare', as: :stats_compare
 

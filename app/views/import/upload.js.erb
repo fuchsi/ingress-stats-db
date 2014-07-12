@@ -1,0 +1,10 @@
+<% if @upload.new_record? %>
+  alert('Failed');
+<% else %>
+  if ($('#screenshot-container') !== undefined) {
+    $('#screenshot-container').append("<%=j render partial: 'import/upload', locals: { upload: @upload } %>");
+  }
+  if ($('#agent_stat_id') !== undefined) {
+    $('#agent_stat_id').val(<%= @agent_stats.id %>);
+  }
+<% end %>

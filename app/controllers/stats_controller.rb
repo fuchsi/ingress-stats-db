@@ -36,7 +36,7 @@ class StatsController < ApplicationController
 
     respond_to do |format|
       if @stats.update(stats_params)
-        format.html { redirect_to @stats, notice: 'Agent Stats were successfully updated.' }
+        format.html { redirect_to stats_path(@stats), notice: 'Agent Stats were successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

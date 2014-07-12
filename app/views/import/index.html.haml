@@ -6,11 +6,12 @@
     .row
       .small-12.columns
         %p Hier sollte die Erklärung sein.
-    = form_tag :import, multipart: true, 'data-abide' => true do
+    = form_tag :import, id: :new_import, multipart: true, 'data-abide' => true do
+      = hidden_field_tag :id, 0, id: :agent_stat_id
       .row
-        .small-6.columns
+        #screenshot-container.small-6.columns
           = label_tag :screenshot, t('text.import.screenshot')
-          = file_field_tag 'screenshot[]', accept: 'image/png,image/gif,image/jpeg', multiple: true
+          = file_field_tag 'screenshot', accept: 'image/png,image/gif,image/jpeg', multiple: true
         .small-6.columns
           = label_tag :name, t('activerecord.attributes.agent_stat.name')
           = text_field_tag :name, '', placeholder: t('activerecord.attributes.agent_stat.name_placeholder')
@@ -22,3 +23,7 @@
           = label_tag :time, t('activerecord.attributes.agent_stat.import_time')
           = time_field_tag :time, Time.now.to_s(:time_long), required_pattern: 'time'
       = submit_tag t('buttons.import'), :class => 'button'
+
+    -# jquery upload template
+    ! <script id="template-upload" type="text/x-tmpl"><div class="upload">{%=o.name%}<div class="progress"><div class="progress-bar bar" style="width: 0%"></div></div></div></script>
+

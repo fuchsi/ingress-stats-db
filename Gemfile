@@ -54,3 +54,8 @@ gem 'tesseract-ocr', '~> 0.1.6'
 
 # Use configurate
 gem 'configurate'
+
+# Use paperclip
+gem "paperclip", "~> 4.1"
+
+gem 'jquery-fileupload-rails'

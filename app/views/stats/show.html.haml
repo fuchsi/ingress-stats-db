@@ -3,19 +3,24 @@
     %h3= t('text.stats.show')
 
   .panel
-    %table
-      %thead
-        %tr
-          %th Key
-          %th Value
-      %tbody
-        %tr
-          %td Level
-          %td= number_with_delimiter(@stats.level)
-        %tr
-          %td AP
-          %td= number_with_delimiter(@stats.ap)
-        - @stats.agent_stats_entries.each do |entry|
-          %tr
-            %td= StatsHelper::KEYWORDS[entry.name.to_sym]
-            %td= number_with_delimiter(entry[:value])
+    .row
+      .small-8.columns
+        %table
+          %thead
+            %tr
+              %th Key
+              %th Value
+          %tbody
+            %tr
+              %td Level
+              %td= number_with_delimiter(@stats.level)
+            %tr
+              %td AP
+              %td= number_with_delimiter(@stats.ap)
+            - @stats.agent_stats_entries.each do |entry|
+              %tr
+                %td= StatsHelper::KEYWORDS[entry.name.to_sym]
+                %td= number_with_delimiter(entry[:value])
+      .small-4.columns
+        - @stats.agent_stats_uploads.each do |upload|
+          .upload= image_tag(upload.screenshot, class: 'thumb')
